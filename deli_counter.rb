@@ -1,41 +1,49 @@
-var katzDeli = [];
+katz_deli = ["Holly", "Heather", "Ashley"]
 
-function currentLine(line){
-  if(!line.length) {
-    return "The line is currently empty.";
-  }
-  var lineNamesandNumbers = [];
 
-  for(var i=0; i<line.length; i++) {
-    lineNamesandNumbers.push(i+1 + ". "+ line[i]);
-  }
-  console.log("The line is currently: " + lineNamesandNumbers)
-  return "The line is currently: " + lineNamesandNumbers.join(', ');
-}
+def line(array) 
+  if array.length >= 1
+    nuarray = []
+    counter = 1 
+    array.each do |name|
+      nuarray.push("#{counter}. #{name}")
+      counter += 1 
+    end 
+    puts "The line is currently: #{nuarray.join(" ")}"
+  else
+    puts "The line is currently empty."
+  end
+end
 
-function nowServing(line) {
-  if(!line.length) {
-    console.log("There is nobody waiting to be served!")
-    return "There is nobody waiting to be served!"
-  } else {
-    //console.log("Currently serving " + line.shift());
-    return "Currently serving " + line.shift();
-  }
-}
+line(katz_deli)
 
-function takeANumber(line, name){
-  line.push(name);
+def line_simple(array) 
+  current_line = "The simple line is currently:"
+  array.each.with_index(1) do |value, indexemus|  
+    current_line << " #{indexemus}. #{value},"    
+  end 
+  puts current_line
+end 
+  
+line_simple(katz_deli)  
 
-  console.log("Welcome, " + name + ". You are number " + line.length + " in line.");
+def take_a_number(line, new_person)
+  line.push(new_person) 
+  puts "Welcome, #{new_person}. You are number #{line.length} in line."
+end
 
-  return "Welcome, " + name + ". You are number " + line.length + " in line."
-}
-takeANumber(katzDeli, "Ada")
-takeANumber(katzDeli, "Grace")
-takeANumber(katzDeli, "Kent")
-currentLine(katzDeli);
-nowServing(katzDeli);
-takeANumber(katzDeli, "Matz");
-currentLine(katzDeli);
-nowServing(katzDeli);
-currentLine(katzDeli)
+take_a_number(katz_deli, "Heather")
+
+def now_serving(line)
+  if line.length == 0 
+    puts"There is nobody waiting to be served!"
+  else
+    puts "Currently serving #{line[0]}." 
+    line.shift 
+  end
+end
+
+puts now_serving(katz_deli)
+puts katz_deli
+
+
